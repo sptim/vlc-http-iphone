@@ -1,0 +1,133 @@
+/*
+ * VLC Webinterface for iPhone / iPod Touch
+ *
+ * Cascading Style Sheet - based on 'old' 
+ */
+
+p {
+	margin: 0.5em 0px;
+}
+
+div {
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+    border-style: none;
+}
+
+/* page body */
+body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10pt;
+    margin: 5pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+	padding-top: 0px;
+	padding-bottom: 0px; 
+	min-height: 400px;
+}
+
+/* left column */
+div.left {
+    float: left;
+    width: 19%;
+}
+
+/* main content */
+div.right {
+    float: right;
+    width: 80%;
+}
+
+/* section bloc title */
+div.sectitle {
+    background-color: #5A5ABB;
+    color: #FFFFFF;
+    border: 1px black solid;
+    font-weight: bold;
+    padding: 0pt 5pt;
+	margin-top:1em;
+}
+
+/* section bloc content */
+div.section {
+    background-color: #DDDDFF;
+    border: 1px black solid;
+    border-top: 0px;
+	padding: 5pt;
+	margin-bottom: 0px;
+}
+
+/* section bloc controls */
+div.section-controls {
+    text-align: center;
+    background-color: #DDDDFF;
+    border: 1px black solid;
+    border-top: 0px;
+	padding: 5pt;
+	margin-bottom: 0px;
+}
+
+/* page title */
+h2.title {
+    text-align: center;
+}
+
+h3 {
+    text-align: left;
+}
+
+table {
+    width: 100%;
+}
+
+table.add {
+    width: 100%;
+}
+
+/* playlist line */
+tr.line1 {
+    background-color: #EEEEFF;
+}
+
+/* playlist line */
+tr.line2 {
+    background-color: #CCCCFF;
+}
+
+/* help text */
+span.small {
+	font-size: 0.7em;
+}
+
+form {
+    margin: 0pt;
+    padding: 0pt;
+}
+
+input {
+    border: 1px solid black;
+}
+
+ul#playlist, ul#playlist ul{
+    list-style-type: none;
+}
+
+.hidden {
+	display: none;
+}
+
+canvas {
+	height: 0.5em;
+	width:100%;
+	border:1px solid black;
+}
+
+ul {
+	padding-left:1.4em;
+}
+
+ul ul {
+	padding-left:0.7em;
+}
+

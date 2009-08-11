@@ -1,0 +1,77 @@
+<vlc id="if" param1="0" />
+
+/*
+ * VLC Webinterface for iPhone / iPod Touch
+ *
+ * JSON interface 
+ */
+
+<vlc id="end" />
+{ <vlc id="control" param1="stop,pause,previous,next,add,sout,play,delete,empty,seek,fullscreen,keep,volume,sort,move" /> <vlc id="set" param1="sout" param2="string" />
+"State":"<vlc id="value" param1="stream_state" />",
+"Length":"<vlc id="value" param1="stream_length" />",
+"Time":"<vlc id="value" param1="stream_time" />",
+"Volume":"<vlc id="value" param1="volume" />",
+"Playlist":[
+<vlc id="rpn" param1="last_depth 0 store" />
+<vlc id="rpn" param1="delimiter '' store" />
+<vlc id="foreach" param1="pl" param2="playlist" />
+	<vlc id="if" param1="last_depth value pl.depth value >" />
+		<vlc id="rpn" param1="pl.depth value ':' last_depth value 1 - ':' 1 strcat strcat strcat strcat" />
+		<vlc id="foreach" param1="i" param2="integer" />
+		]}
+		<vlc id="end" />
+		<vlc id="rpn" param1="last_depth pl.depth value store" />
+		<vlc id="rpn" param1="delimiter ',' store" />
+	<vlc id="end" />
+	<vlc id="if" param1="pl.depth value 0 >" />
+	<vlc id="value" param1="delimiter" />
+	{
+			"index":<vlc id="value" param1="pl.index" />,
+			"type":"<vlc id="value" param1="pl.type" />",
+			"name":"<vlc id="value" param1="pl.name" />",
+			"depth":<vlc id="value" param1="pl.depth" />,
+			<vlc id="if" param1="pl.type value 'Node' strcmp" />
+			"uri":"<vlc id="value" param1="pl.uri" />",
+			"current":<vlc id="value" param1="pl.current" />
+			<vlc id="if" param1="pl.current" />
+			<vlc id="rpn" param1="current_index pl.index value store" />
+			<vlc id="rpn" param1="current_name pl.name value store" />
+			<vlc id="rpn" param1="current_uri pl.uri value store" />
+			<vlc id="end" />
+			}
+			<vlc id="rpn" param1="delimiter ',' store" />
+			<vlc id="else" />
+			"items":[
+			<vlc id="rpn" param1="last_depth pl.depth value 1 + store" />
+			<vlc id="rpn" param1="delimiter '' store" />
+			<vlc id="end" />
+	<vlc id="end" />
+<vlc id="end" />
+<vlc id="rpn" param1="2 ':' last_depth value 1 - ':' 1 strcat strcat strcat strcat" />
+<vlc id="foreach" param1="i" param2="integer" />
+	]},
+<vlc id="end" />
+]}],
+"Info":{
+	<vlc id="rpn" param1="delimiter '' store" />
+	<vlc id="if" param1="current_index" />
+	"File":{
+		"Index":<vlc id="value" param1="current_index" />,
+		"Name":"<vlc id="value" param1="current_name" />",
+		"URI":"<vlc id="value" param1="current_uri" />"}
+	<vlc id="rpn" param1="delimiter ',' store" />
+	<vlc id="end" />
+	<vlc id="foreach" param1="cat" param2="information" />
+	<vlc id="value" param1="delimiter" />
+    "<vlc id="value" param1="cat.name" />":{
+		<vlc id="rpn" param1="delimiter '' store" />
+		<vlc id="foreach" param1="info" param2="cat.info" />
+		<vlc id="value" param1="delimiter" />
+		"<vlc id="value" param1="info.name" />":"<vlc id="value" param1="info.value" />"
+		<vlc id="rpn" param1="delimiter ',' store" />
+		<vlc id="end" />
+		}
+		<vlc id="rpn" param1="delimiter ',' store" />
+	<vlc id="end" />}
+}

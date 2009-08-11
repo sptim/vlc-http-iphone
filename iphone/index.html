@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	/*
+	 * VLC Webinterface for iPhone / iPod Touch
+	 *
+	 * based on 'old' - uses images from current web interface
+	 */
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD  XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml10/DTD/xhtml10transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<title>VLC media player</title>
+		<link href="style.css" title="Default" rel="stylesheet" type="text/css" />
+		<vlc id="control" param1="stop,pause,previous,next,add,sout,play,delete,empty,seek,fullscreen,keep,volume,sort,move" />
+		<vlc id="set" param1="sout" param2="string" />
+		<script src="iphone.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body onload="documentLoaded();">
+		<div class="sectitle" onclick="hide('status');">Status</div>
+		<div class="hidden section" id="status">
+			<span id="State"> </span>: <span id="Time"> </span> / <span id="Length"> </span><br />
+			<canvas id="Position"></canvas><br />
+			<p style="text-align:center;">
+				<button onclick="return control('stop');	  "><img src="../images/stop.png" /></button>
+				<button onclick="return control('pause');	  " id="pause_button" class="hidden buttons"><img id="pauseButton" src="../images/pause.png" /></button>
+				<button onclick="return control('play');      " id="play_button" class="buttons"><img id="playButton" src="../images/play.png" /></button>
+				<button onclick="return control('previous');  "><img src="../images/prev.png" /></button>
+				<button onclick="return control('next');      "><img src="../images/next.png" /></button>
+				<button onclick="return control('fullscreen');"><img src="../images/fullscreen.png" /></button>
+			</p>
+		</div>
+
+		<div class="sectitle" onclick="hide('volume_control');">Volume Control</div>
+		<div class="hidden section-controls" id="volume_control">
+			<p>
+				<button onclick="return control('volume','-128');">&lt;&lt;</button>
+				<button onclick="return control('volume','-32'); ">&lt;</button>
+				<input id="Volume" type="text" value="100" size="3" maxlength="3" onchange="return false;" />%
+				<button onclick="return control('volume','+32'); ">&gt;</button>
+				<button onclick="return control('volume','+128');">&gt;&gt;</button>
+				<br />
+				<canvas id="VolumeBar"></canvas>
+			</p>
+		</div>
+      
+		<div class="sectitle" onclick="hide('playback_control');">Seek</div>
+		<div class="hidden section-controls" id="playback_control">
+			<p>
+				<button onclick="return control('seek','-5min'); ">&lt;&lt;</button>
+				<button onclick="return control('seek','-1min'); ">&lt;&lt;</button>
+				<button onclick="return control('seek','-10sec');">&lt;</button>
+				<button onclick="return control('seek','+10sec');">&gt;</button>
+				<button onclick="return control('seek','+1min'); ">&gt;&gt;</button>
+				<button onclick="return control('seek','+5min'); ">&gt;&gt;&gt;</button>
+			</p>
+			<p>
+				<input type="text" id="seek_value" name="seek_value" size="14"/>
+				<button onclick="return control('seek',document.getElementById('seek_value').value);">Seek</button>
+			</p>
+			<p>
+				<span class="small">(Seek Text: e.g. "+12min 42sec", "01:13:43", "-12%"...)</span>
+			</p>
+		</div>
+      
+		<div class="sectitle" onclick="hide('media_info');">Media Information</div>
+		<div class="hidden section" id="media_info">
+		</div>
+	   
+		<div class="sectitle" onclick="hide('playlist_control');">Playlist</div>
+		<div class="hidden section" id="playlist_control">
+			<ul></ul>
+		</div>
+		
+		<p style="text-align:center;">
+			VLC media player <vlc id="value" param1="version" />
+		</p>
+	</body>
+</html>
