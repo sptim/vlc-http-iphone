@@ -4,6 +4,10 @@
  * Javascript functions
  */
 
+function isIPhoneOrIPod() {
+	return ((navigator.userAgent.indexOf('iPhone')!=-1) || (navigator.userAgent.indexOf('iPod')!=-1));
+}
+
 function showError(txt) {
 	window.alert(txt);
 }
